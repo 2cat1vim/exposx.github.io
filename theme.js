@@ -22,3 +22,26 @@
     });
   });
 })();
+
+(function () {
+  var KEY = 'exposx-stars';
+  function show(n) {
+    if (typeof n !== 'number') return;
+    var els = document.querySelectorAll('.star-count');
+    for (var i = 0; i < els.length; i++) { els[i].textContent = n; els[i].hidden = false; }
+  }
+  document.addEventListener('DOMContentLoaded', function () {
+    var cached = null;
+    try { cached = JSON.parse(sessionStorage.getItem(KEY)); } catch (e) {}
+    if (cached !== null) return show(cached);
+    if (!window.fetch) return;
+    fetch('https://api.github.com/repos/2cat1vim/exposx')
+      .then(function (r) { return r.ok ? r.json() : null; })
+      .then(function (d) {
+        if (!d) return;
+        try { sessionStorage.setItem(KEY, JSON.stringify(d.stargazers_count)); } catch (e) {}
+        show(d.stargazers_count);
+      })
+      .catch(function () {});
+  });
+})();

@@ -150,3 +150,33 @@ dd { margin-left: 20px; color: var(--muted); }
 .links { display: flex; flex-wrap: wrap; gap: 24px; margin-top: 40px; }
 
 footer a { color: var(--muted); }
+
+.cta { display: flex; flex-wrap: wrap; gap: 12px; margin: 32px 0 40px; }
+
+.star,
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 15px;
+  font-weight: 700;
+  text-decoration: none;
+  padding: 10px 18px;
+  border: 1px solid var(--fg);
+  transition: transform .1s ease;
+}
+
+.star { background: var(--fg); color: var(--bg); }
+.btn { background: none; color: var(--fg); }
+
+.star:hover,
+.btn:hover { transform: translateY(-2px); }
+
+.star-count {
+  font-weight: 400;
+  padding-left: 10px;
+  border-left: 1px solid var(--bg);
+}
+
+footer p { margin-bottom: 12px; }
+footer .star { color: var(--bg); font-size: 13px; padding: 6px 14px; }
