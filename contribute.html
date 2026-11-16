@@ -4,8 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Exposx Contribute</title>
-<link rel="stylesheet" href="style.css">
-<script src="theme.js"></script>
+<link rel="stylesheet" href="style.css?v=3">
+<script src="theme.js?v=3"></script>
 </head>
 <body>
 <header>
@@ -20,9 +20,30 @@
   </nav>
 </header>
 <main>
-  <h1>Contribute</h1>
-  <p>Contribute blablabla...</p>
+<h1>Contribute</h1>
+  <p class="lead">Exposx is written in C, for fun and the love of the game.</p>
+
+  <h2>Source</h2>
+  <p><a href="https://github.com/2cat1vim/exposx">github.com/2cat1vim/exposx</a></p>
+<pre><code>client/   the CLI scanner (cli.c)
+server/   the CVE server (srv.c)</code></pre>
+
+  <h2>Build</h2>
+<pre><code>cd client &amp;&amp; make     # exposx client
+cd server &amp;&amp; make     # exposx-server
+./exposx-server 8080</code></pre>
+  <p>The code is compiled with <code>-Wall -Wextra -Werror</code>: it must build without any warning. The client connects to the server on <code>127.0.0.1:8080</code>.</p>
+
+  <h2>Ideas</h2>
+  <ul>
+    <li>Implement <code>poc</code> and <code>export</code>.</li>
+    <li>Fetch the NVD data and store it in SQLite on the server.</li>
+    <li>Docker setup for the client.</li>
+  </ul>
+
+  <h2>Rules</h2>
+  <p>No AI-generated code. See the <a href="aipolicy.html">AI policy</a>.</p>
 </main>
-<footer>Exposx — CVE Scanner</footer>
+<footer>Exposx — CVE Scanner · <a href="https://github.com/2cat1vim/exposx">GitHub</a></footer>
 </body>
 </html>

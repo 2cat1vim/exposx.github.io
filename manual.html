@@ -4,8 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Exposx Manual</title>
-<link rel="stylesheet" href="style.css">
-<script src="theme.js"></script>
+<link rel="stylesheet" href="style.css?v=3">
+<script src="theme.js?v=3"></script>
 </head>
 <body>
 <header>
@@ -20,9 +20,38 @@
   </nav>
 </header>
 <main>
-  <h1>Manual</h1>
-  <p>Manual blablabla...</p>
+<h1>Manual</h1>
+
+  <h2>Options</h2>
+<pre><code>exposx -h    usage / help
+exposx -v    verbose
+exposx -s    stdin</code></pre>
+
+  <h2>Commands</h2>
+  <p>Once started, exposx opens a prompt:</p>
+<pre><code>exposx$ search &lt;id | name&gt;
+exposx$ poc &lt;id&gt;
+exposx$ export &lt;id&gt; &lt;json | pretty&gt;
+exposx$ update
+exposx$ exit</code></pre>
+
+  <dl>
+    <dt>search &lt;id | name&gt;</dt>
+    <dd>Asks the server for a CVE and returns it.</dd>
+    <dt>poc &lt;id&gt;</dt>
+    <dd>Proof of concept for a CVE.</dd>
+    <dt>export &lt;id&gt; &lt;json | pretty&gt;</dt>
+    <dd>Exports a CVE as raw JSON or readable text.</dd>
+    <dt>update</dt>
+    <dd>Checks the latest release on GitHub and updates exposx if you accept.</dd>
+    <dt>exit</dt>
+    <dd>Quits exposx.</dd>
+  </dl>
+  <p class="note">Work in progress: <code>poc</code> and <code>export</code> are not implemented yet, and <code>search</code> is still being wired to the server.</p>
+
+  <h2>How it works</h2>
+  <p>Every day at 07:30 (Paris time) the server calls the <a href="https://nvd.nist.gov/developers/vulnerabilities">NVD API</a>, stores the new CVEs in SQLite and removes those older than 365 days. The client talks to the server to get its results.</p>
 </main>
-<footer>Exposx — CVE Scanner</footer>
+<footer>Exposx — CVE Scanner · <a href="https://github.com/2cat1vim/exposx">GitHub</a></footer>
 </body>
 </html>

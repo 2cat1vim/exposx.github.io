@@ -4,8 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Exposx Install</title>
-<link rel="stylesheet" href="style.css">
-<script src="theme.js"></script>
+<link rel="stylesheet" href="style.css?v=3">
+<script src="theme.js?v=3"></script>
 </head>
 <body>
 <header>
@@ -20,9 +20,33 @@
   </nav>
 </header>
 <main>
-  <h1>Install</h1>
-  <p>Install blablabla...</p>
+<h1>Install</h1>
+  <p class="lead">Exposx runs on Linux and macOS.</p>
+
+  <h2>Requirements</h2>
+  <ul>
+    <li><code>make</code> and a C compiler (<code>cc</code> / <code>clang</code>)</li>
+    <li><code>libcurl</code> (<code>libcurl4-openssl-dev</code>)</li>
+    <li><code>libarchive</code> (<code>libarchive-dev</code>)</li>
+  </ul>
+  <p>On Debian/Ubuntu, <code>make</code> checks these packages and installs the missing ones with <code>apt-get</code> (it asks for <code>sudo</code>).</p>
+
+  <h2>Build the client</h2>
+<pre><code>git clone https://github.com/2cat1vim/exposx.git
+cd exposx/client
+make</code></pre>
+  <p>This produces the <code>exposx_linux</code> binary (or <code>exposx_darwin</code> on macOS).</p>
+
+  <h2>Run</h2>
+<pre><code>./exposx_linux</code></pre>
+  <p>Run it from the <code>client</code> folder: it reads its version from the <code>.exposx</code> file next to it. Do not edit that file.</p>
+
+  <h2>Update</h2>
+  <p>Inside exposx, type <code>update</code>. It compares your version with the latest GitHub release and asks before downloading.</p>
+
+  <h2>Windows and others</h2>
+  <p>A <code>docker-compose.yml</code> is planned to run the client on Windows or any other system. Only the client goes in Docker: the server calls the internet every day to update its CVE data, so hosting your own would not help.</p>
 </main>
-<footer>Exposx — CVE Scanner</footer>
+<footer>Exposx — CVE Scanner · <a href="https://github.com/2cat1vim/exposx">GitHub</a></footer>
 </body>
 </html>
