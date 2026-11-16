@@ -4,8 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Exposx Install</title>
-<link rel="stylesheet" href="style.css?v=6">
-<script src="theme.js?v=6"></script>
+<link rel="stylesheet" href="style.css?v=7">
+<script src="theme.js?v=7"></script>
 </head>
 <body>
 <header>
@@ -13,6 +13,7 @@
   <nav>
     <a href="index.html">Home</a>
     <a href="install.html" aria-current="page">Install</a>
+    <a href="selfhost.html">Self-host</a>
     <a href="manual.html">Manual</a>
     <a href="contribute.html">Contribute</a>
     <a href="aipolicy.html">AI Policy</a>
@@ -44,6 +45,8 @@ cc -o exposx cli.c -lcurl -I"$(brew --prefix libarchive)/include" -L"$(brew --pr
   <p>Install <a href="https://www.docker.com/products/docker-desktop/">Docker Desktop</a>, then run this in PowerShell. It downloads the latest release inside a Linux container, builds it and starts exposx.</p>
 <pre><code>docker run -it --rm debian:bookworm bash -c 'apt-get update && apt-get install -y curl ca-certificates make gcc clang libcurl4-openssl-dev libarchive-dev && TAG=$(basename $(curl -fsSLI -o /dev/null -w %{url_effective} https://github.com/2cat1vim/exposx/releases/latest)) && curl -fsSL https://github.com/2cat1vim/exposx/archive/refs/tags/$TAG.tar.gz | tar xz && cd exposx-$TAG && make && ./exposx_linux'</code></pre>
   <p class="note">The container is removed when you exit, so the next run downloads and builds again (about a minute). This also works on any system with Docker.</p>
+
+  <p>This installs the client, which uses the official exposx server. To run your own server, see <a href="selfhost.html">Self-host</a>.</p>
 
   <h2>Run</h2>
   <p>Run exposx from the folder you extracted: it reads its version from the <code>.exposx</code> file next to it. Do not edit that file.</p>

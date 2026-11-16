@@ -4,8 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Exposx</title>
-<link rel="stylesheet" href="style.css?v=6">
-<script src="theme.js?v=6"></script>
+<link rel="stylesheet" href="style.css?v=7">
+<script src="theme.js?v=7"></script>
 </head>
 <body>
 <header>
@@ -13,6 +13,7 @@
   <nav>
     <a href="index.html" aria-current="page">Home</a>
     <a href="install.html">Install</a>
+    <a href="selfhost.html">Self-host</a>
     <a href="manual.html">Manual</a>
     <a href="contribute.html">Contribute</a>
     <a href="aipolicy.html">AI Policy</a>
@@ -31,6 +32,12 @@
   </p>
   <p>Exposx keeps only the latest CVEs (last 365 days). A small C server pulls new vulnerabilities from the NVD every day, and the C client lets you query them from your terminal.</p>
 
+  <h2>Two ways to use it</h2>
+  <ul>
+    <li><strong>Client only</strong> — install the client, it queries the official exposx server.</li>
+    <li><strong>Self-hosted</strong> — run your own server for your company or at home. It feeds itself from the NVD every day and your queries stay on your network. <a href="selfhost.html">How →</a></li>
+  </ul>
+
   <h2>Features</h2>
   <ul>
     <li>On start, shows the 3 latest most critical CVEs.</li>
@@ -44,7 +51,7 @@
   <p>C client scanner → C server on a VPS → Docker image on the GitHub package registry.</p>
   <p class="note">Exposx is in early development: some commands are not implemented yet.</p>
 
-  <p class="links"><a href="install.html">Install →</a> <a href="manual.html">Manual →</a> <a href="https://github.com/2cat1vim/exposx">Source →</a></p>
+  <p class="links"><a href="install.html">Install →</a> <a href="selfhost.html">Self-host →</a> <a href="manual.html">Manual →</a> <a href="https://github.com/2cat1vim/exposx">Source →</a></p>
 </main>
 <footer>
   <p>Like exposx? Give it a star, it helps a lot.</p>
