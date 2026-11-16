@@ -4,8 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Exposx</title>
-<link rel="stylesheet" href="style.css">
-<script src="theme.js"></script>
+<link rel="stylesheet" href="style.css?v=3">
+<script src="theme.js?v=3"></script>
 </head>
 <body>
 <header>
@@ -20,9 +20,28 @@
   </nav>
 </header>
 <main>
+<pre class="banner" aria-label="EXPOSX">░█▀▀░█░█░█▀█░█▀█░█▀▀░█░█
+░█▀▀░▄▀▄░█▀▀░█░█░▀▀█░▄▀▄
+░▀▀▀░▀░▀░▀░░░▀▀▀░▀▀▀░▀░▀</pre>
   <h1>CVE Scanner</h1>
-  <p class="lead">Exposx is a simple CVE scanner.</p>
+  <p class="lead">Common Vulnerability Exposure — Command Line Interface. Written in C, no AI.</p>
+  <p>Exposx keeps only the latest CVEs (last 365 days). A small C server pulls new vulnerabilities from the NVD every day, and the C client lets you query them from your terminal.</p>
+
+  <h2>Features</h2>
+  <ul>
+    <li>On start, shows the 3 latest most critical CVEs.</li>
+    <li>Search a CVE by id or name.</li>
+    <li>Export a CVE as JSON or pretty text.</li>
+    <li>Built-in self-update from GitHub releases.</li>
+    <li>Runs on Linux and macOS.</li>
+  </ul>
+
+  <h2>Roadmap</h2>
+  <p>C client scanner → C server on a VPS → Docker image on the GitHub package registry.</p>
+  <p class="note">Exposx is in early development: some commands are not implemented yet.</p>
+
+  <p class="links"><a href="install.html">Install →</a> <a href="manual.html">Manual →</a> <a href="https://github.com/2cat1vim/exposx">Source →</a></p>
 </main>
-<footer>Exposx — CVE Scanner</footer>
+<footer>Exposx — CVE Scanner · <a href="https://github.com/2cat1vim/exposx">GitHub</a></footer>
 </body>
 </html>
