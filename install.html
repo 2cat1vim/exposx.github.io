@@ -4,8 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Exposx Install</title>
-<link rel="stylesheet" href="style.css?v=3">
-<script src="theme.js?v=3"></script>
+<link rel="stylesheet" href="style.css?v=4">
+<script src="theme.js?v=4"></script>
 </head>
 <body>
 <header>
@@ -20,32 +20,38 @@
   </nav>
 </header>
 <main>
-<h1>Install</h1>
-  <p class="lead">Exposx runs on Linux and macOS.</p>
+  <h1>Install</h1>
+  <p class="lead">Download the latest release, build it, run it.</p>
 
-  <h2>Requirements</h2>
-  <ul>
-    <li><code>make</code> and a C compiler (<code>cc</code> / <code>clang</code>)</li>
-    <li><code>libcurl</code> (<code>libcurl4-openssl-dev</code>)</li>
-    <li><code>libarchive</code> (<code>libarchive-dev</code>)</li>
-  </ul>
-  <p>On Debian/Ubuntu, <code>make</code> checks these packages and installs the missing ones with <code>apt-get</code> (it asks for <code>sudo</code>).</p>
+  <h2>Linux</h2>
+  <p>Debian / Ubuntu. <code>make</code> installs <code>libcurl</code>, <code>libarchive</code> and <code>clang</code> if they are missing (it asks for <code>sudo</code>).</p>
+<pre><code>TAG=$(basename "$(curl -fsSLI -o /dev/null -w '%{url_effective}' https://github.com/2cat1vim/exposx/releases/latest)")
+curl -fsSL "https://github.com/2cat1vim/exposx/archive/refs/tags/$TAG.tar.gz" | tar xz
+cd "exposx-$TAG"
+make
+./exposx_linux</code></pre>
 
-  <h2>Build the client</h2>
-<pre><code>git clone https://github.com/2cat1vim/exposx.git
-cd exposx/client
-make</code></pre>
-  <p>This produces the <code>exposx_linux</code> binary (or <code>exposx_darwin</code> on macOS).</p>
+  <h2>macOS</h2>
+  <p>Needs the Xcode command line tools (<code>xcode-select --install</code>) and <a href="https://brew.sh">Homebrew</a>.</p>
+<pre><code>brew install libarchive
+TAG=$(basename "$(curl -fsSLI -o /dev/null -w '%{url_effective}' https://github.com/2cat1vim/exposx/releases/latest)")
+curl -fsSL "https://github.com/2cat1vim/exposx/archive/refs/tags/$TAG.tar.gz" | tar xz
+cd "exposx-$TAG"
+cc -o exposx cli.c -lcurl -I"$(brew --prefix libarchive)/include" -L"$(brew --prefix libarchive)/lib" -larchive
+./exposx</code></pre>
+
+  <h2>Windows (Docker)</h2>
+  <p>Install <a href="https://www.docker.com/products/docker-desktop/">Docker Desktop</a>, then run this in PowerShell. It downloads the latest release inside a Linux container, builds it and starts exposx.</p>
+<pre><code>docker run -it --rm debian:bookworm bash -c 'apt-get update && apt-get install -y curl ca-certificates make gcc clang libcurl4-openssl-dev libarchive-dev && TAG=$(basename $(curl -fsSLI -o /dev/null -w %{url_effective} https://github.com/2cat1vim/exposx/releases/latest)) && curl -fsSL https://github.com/2cat1vim/exposx/archive/refs/tags/$TAG.tar.gz | tar xz && cd exposx-$TAG && make && ./exposx_linux'</code></pre>
+  <p class="note">The container is removed when you exit, so the next run downloads and builds again (about a minute). This also works on any system with Docker.</p>
 
   <h2>Run</h2>
-<pre><code>./exposx_linux</code></pre>
-  <p>Run it from the <code>client</code> folder: it reads its version from the <code>.exposx</code> file next to it. Do not edit that file.</p>
+  <p>Run exposx from the folder you extracted: it reads its version from the <code>.exposx</code> file next to it. Do not edit that file.</p>
 
   <h2>Update</h2>
   <p>Inside exposx, type <code>update</code>. It compares your version with the latest GitHub release and asks before downloading.</p>
 
-  <h2>Windows and others</h2>
-  <p>A <code>docker-compose.yml</code> is planned to run the client on Windows or any other system. Only the client goes in Docker: the server calls the internet every day to update its CVE data, so hosting your own would not help.</p>
+  <p>All releases: <a href="https://github.com/2cat1vim/exposx/releases">github.com/2cat1vim/exposx/releases</a></p>
 </main>
 <footer>Exposx — CVE Scanner · <a href="https://github.com/2cat1vim/exposx">GitHub</a></footer>
 </body>
