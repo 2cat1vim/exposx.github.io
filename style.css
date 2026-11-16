@@ -134,6 +134,12 @@ pre {
 pre code { border: 0; padding: 0; }
 
 pre.diagram { white-space: pre; overflow-wrap: normal; line-height: 1.3; }
+pre.diagram-wide { display: none; }
+
+@media (min-width: 48em) {
+  pre.diagram-wide { display: block; }
+  pre.diagram-narrow { display: none; }
+}
 
 pre.banner {
   white-space: pre;

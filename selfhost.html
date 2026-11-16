@@ -4,8 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Exposx Self-host</title>
-<link rel="stylesheet" href="style.css?v=7">
-<script src="theme.js?v=7"></script>
+<link rel="stylesheet" href="style.css?v=8">
+<script src="theme.js?v=8"></script>
 </head>
 <body>
 <header>
@@ -25,7 +25,9 @@
   <p class="lead">Use the official server, or run your own. For companies and individuals alike.</p>
 
   <h2>How it works</h2>
-<pre class="diagram"><code>NVD API
+<pre class="diagram diagram-wide"><code>NVD API ──daily──▶ exposx server  ◀──query─── exposx client
+                   (CVE database) ───reply──▶</code></pre>
+<pre class="diagram diagram-narrow"><code>NVD API
    │  daily update
    ▼
 exposx server   (CVE database)
